@@ -1,9 +1,6 @@
 <template>
     <div class="footer">
         <article>
-        <footer>
-            <h2>푸터</h2>         
-        </footer>
         </article>
     </div>
 </template>
