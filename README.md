@@ -11,3 +11,13 @@
   <li>Login&LogOut기능 탑재(firebase 사용 예정)</li>
   <li>Favorite icon (구독과 유사한, 즐겨찾기 기능으로 사용 예정)</li>
 <ol>
+
+0228 Sidebar 구성 및 수정
+![open](https://user-images.githubusercontent.com/109400761/221890237-5b2a27e4-2998-46dd-99f7-7f0db978489e.png)
+<p>사이드바 오픈 시</p>
+![close](https://user-images.githubusercontent.com/109400761/221890303-3fde0840-c3f2-4d29-bac6-31567683ab94.png)
+<p>사이드바 클로즈시</p>
+
+<ol>고쳐야 할 사항</ol>
+<li>Sidebar 오픈 시 본문 레이아웃 sidebar 폭만큼 조정하기</li>
+<li>일정 레이아웃보다 작을시 레이아웃 전체적으로 조정</li>
