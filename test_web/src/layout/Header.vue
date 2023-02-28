@@ -33,7 +33,7 @@
                     </v-btn>
                      </v-toolbar>
                 </v-card>
-                <Sidebar v-if="is_expanded"/>
+                <Sidebar v-if="is_expanded == false"/>
             </v-app>
         </article>
     </div>
@@ -53,7 +53,10 @@ export default {
     methods:{
          ToggleMenu(){
           this.is_expanded = !this.is_expanded
-          console.log('클릭')
+          const Sidebar_open = document.getElementsByClassName("Story");
+          if(this.is_expanded == true){
+              console.log(Sidebar_open)
+          }
         }
     },
     setup(){
