@@ -1,6 +1,6 @@
 # testweb
 
-##0227 Header Layout 구성
+## 0227 Header Layout 구성
 ![image](https://user-images.githubusercontent.com/109400761/221542830-71c7764a-31ea-49a9-8361-eab677230c7f.png)
 <p>현재 기능은 탑재X</p>
 <p>반응형 웹(디스플레이 크기에 따른 조정) 기초적인 부분은 구현된 상태</p>
@@ -12,7 +12,7 @@
   <li>Favorite icon (구독과 유사한, 즐겨찾기 기능으로 사용 예정)</li>
 <ol>
 
-##0228 Sidebar 구성 및 수정
+  <H3> 0228 Sidebar 구성 및 수정</H3>
 사이드바 오픈시
 ![open](https://user-images.githubusercontent.com/109400761/221890237-5b2a27e4-2998-46dd-99f7-7f0db978489e.png)
 
