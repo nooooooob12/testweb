@@ -4,10 +4,10 @@
             <v-app>
                 <v-card>
                     <v-toolbar density="compact" color="primary">
-                    <v-app-bar-nav-icon color="white">
+                    <v-app-bar-nav-icon color="white" @click="ToggleMenu">
                         <span class="material-symbols-outlined">
                             menu
-                        </span>     
+                        </span>
                     </v-app-bar-nav-icon>
                     <v-toolbar-tilte>HeaderName</v-toolbar-tilte>
                     <v-spacer></v-spacer>
@@ -33,19 +33,31 @@
                     </v-btn>
                      </v-toolbar>
                 </v-card>
+                <Sidebar/>
             </v-app>
-
         </article>
     </div>
 </template>
 <script>
+import {ref,reactive} from 'vue';
+import Sidebar from './Sidebar.vue'
 export default {
+    name:"Header",
+    components:{Sidebar},
     data:()=>{
         return{
-            L_bar:"https://cdn.iconscout.com/icon/free/png-256/bars-collection-view-application-grid-menu-44415.png"
+            L_bar:"https://cdn.iconscout.com/icon/free/png-256/bars-collection-view-application-grid-menu-44415.png",
+            Toggle:false
         }
+    },
+    methods:{
+         ToggleMenu(){
+          
+        }
+    },
+    setup(){
+        
     }
-    
 }
 </script>
 <style lang="scss" scoped>
@@ -74,6 +86,7 @@ $border-size:1rem;
         }
     }
     .material-symbols-outlined {
+        position: absolute;
         font-variation-settings:
         'FILL' 0,
         'wght' 400,

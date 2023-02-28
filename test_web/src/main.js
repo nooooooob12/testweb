@@ -1,6 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
+//Vuex 설치 & import
+import store from './store'
+
+
 // router 경로 미리 불러와 사용 준비
 import router from '@/router/router'
 
@@ -23,4 +27,4 @@ const vuetify = createVuetify ({
     components,
     directives,
 })
-createApp(App).use(Vue3Material).use(vuetify).mount('#app')
+createApp(App).use(Vue3Material).use(vuetify).use(store).mount('#app')
