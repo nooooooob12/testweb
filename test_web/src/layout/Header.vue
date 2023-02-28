@@ -33,7 +33,7 @@
                     </v-btn>
                      </v-toolbar>
                 </v-card>
-                <Sidebar/>
+                <Sidebar v-if="is_expanded"/>
             </v-app>
         </article>
     </div>
@@ -47,12 +47,13 @@ export default {
     data:()=>{
         return{
             L_bar:"https://cdn.iconscout.com/icon/free/png-256/bars-collection-view-application-grid-menu-44415.png",
-            Toggle:false
+            is_expanded:true
         }
     },
     methods:{
          ToggleMenu(){
-          
+          this.is_expanded = !this.is_expanded
+          console.log('클릭')
         }
     },
     setup(){

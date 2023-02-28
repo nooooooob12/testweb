@@ -45,6 +45,8 @@ export default {
             is_expanded:true
         }
     },
+    methods:{  
+    },
     setup() {
         {
       const store = useStore()
