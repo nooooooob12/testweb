@@ -14,9 +14,9 @@
 
 0228 Sidebar 구성 및 수정
 ![open](https://user-images.githubusercontent.com/109400761/221890237-5b2a27e4-2998-46dd-99f7-7f0db978489e.png)
-<p>사이드바 오픈 시</p>
+사이드바 오픈시
 ![close](https://user-images.githubusercontent.com/109400761/221890303-3fde0840-c3f2-4d29-bac6-31567683ab94.png)
-<p>사이드바 클로즈시</p>
+사이드바 클로즈시
 
 <ol>고쳐야 할 사항</ol>
 <li>Sidebar 오픈 시 본문 레이아웃 sidebar 폭만큼 조정하기</li>
