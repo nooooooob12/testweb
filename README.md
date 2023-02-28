@@ -11,8 +11,9 @@
   <li>Login&LogOut기능 탑재(firebase 사용 예정)</li>
   <li>Favorite icon (구독과 유사한, 즐겨찾기 기능으로 사용 예정)</li>
 <ol>
+  
 
-  <H3> 0228 Sidebar 구성 및 수정</H3>
+0228 Sidebar 구성 및 수정
 사이드바 오픈시
 ![open](https://user-images.githubusercontent.com/109400761/221890237-5b2a27e4-2998-46dd-99f7-7f0db978489e.png)
 
