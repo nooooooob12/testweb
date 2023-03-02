@@ -61,45 +61,45 @@ $left:left;
     display: flex;
     position: sticky;
     top:0px;
-    width: 20%;
+    width: 150px;
     height: 100%;
     padding: 0.5em 1.0em 0.5em 1.0em;
     flex-direction: column;
     background-color:#E2E2E2;
     border-top-right-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
-    transition: width 1s;
     overflow: hidden;
     span{
     vertical-align: middle;
     text-align: left;
     margin: 0px; padding: 0px;
-    .m-text{margin-left: 0.5em; width: 100%;}
+    .m-text{margin-left: 0.5em; width: 50px; font-size: 0.5em; overflow: hidden; word-break: break-all;}
     }
     .m-home{
         justify-content: $left;
         margin-top: 32px;
         margin-bottom: 30px;
-        width: 100%;
+        width: 120px;
         overflow: hidden;
     }
     .m-Profile{
         justify-content: $left;
         margin-bottom: 30px;
-        width: 100%;
+        width: 120px;
         overflow: hidden;
     }
     .m-Subscribe{
         justify-content: $left;
         margin-bottom: 30px;
-        width: 100%;
+        width: 120px;
         overflow: hidden;
     }
     .m-Help{
         justify-content: $left;
         margin-bottom: 30px;
-        width: 100%;
+        width: 120px;
         overflow: hidden;
+        word-break: keep-all;
     }
     .m-status{
        position:relative;

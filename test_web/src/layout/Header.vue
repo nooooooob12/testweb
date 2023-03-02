@@ -4,8 +4,8 @@
             <v-app>
                 <v-card>
                     <v-toolbar density="compact" color="primary">
-                    <v-app-bar-nav-icon color="white" @click="ToggleMenu">
-                        <span class="material-symbols-outlined">
+                    <v-app-bar-nav-icon color="white">
+                        <span class="material-symbols-outlined" @click="MenuAcitve">
                             menu
                         </span>
                     </v-app-bar-nav-icon>
@@ -33,7 +33,7 @@
                     </v-btn>
                      </v-toolbar>
                 </v-card>
-                <Sidebar v-if="is_expanded == false"/>
+                <Sidebar v-if="is_expanded"/>
             </v-app>
         </article>
     </div>
@@ -51,16 +51,15 @@ export default {
         }
     },
     methods:{
-         ToggleMenu(){
-          this.is_expanded = !this.is_expanded
-          const Sidebar_open = document.getElementsByClassName("Story");
-          if(this.is_expanded == true){
-              console.log(Sidebar_open)
-          }
-        }
+
     },
     setup(){
-        
+        const is_expanded = ref(false)
+        const MenuAcitve = ()=>{
+        is_expanded.value = !is_expanded.value
+        localStorage.setItem("is_expanded", is_expanded.value)
+      }
+      return { MenuAcitve, is_expanded }
     }
 }
 </script>
