@@ -27,4 +27,4 @@ const vuetify = createVuetify ({
     components,
     directives,
 })
-createApp(App).use(Vue3Material).use(vuetify).use(store).mount('#app')
+createApp(App).use(Vue3Material).use(vuetify).use(store).use(router).mount('#app')

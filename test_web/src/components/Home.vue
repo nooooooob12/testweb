@@ -1,20 +1,15 @@
 <template>
     <div class="Home">
-        <main>
-            <Header/>
-                <div class="Story">
-                    <h2>본문</h2>
-                </div>
-            <Footer/>
-        </main>
+        <article>
+            <main>
+                <h2>여기는 메인</h2>
+            </main>
+        </article>
     </div>
 </template>
 <script lnag="ts">
-import Header from '@/layout/Header.vue'
-import Footer from '@/layout/Footer.vue'
 export default {
     name:"Home",
-    components:{Header,Footer},
     data(){
 
     },

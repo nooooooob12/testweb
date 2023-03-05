@@ -1,99 +1,66 @@
 <template>
-    <div class="header">
-        <article id="header">
-            <v-app>
-                <v-card>
-                    <v-toolbar density="compact" color="primary">
-                    <v-app-bar-nav-icon color="white">
-                        <span class="material-symbols-outlined" @click="MenuAcitve">
-                            menu
-                        </span>
-                    </v-app-bar-nav-icon>
-                    <v-toolbar-tilte>HeaderName</v-toolbar-tilte>
-                    <v-spacer></v-spacer>
-                        <div class="search_box">
-                        <input type="search" placeholder="검색" id="search">
-                    </div>
-                    <v-btn id="search_btn">
-                        <span class="material-symbols-outlined">
-                            search
-                        </span>
-                    </v-btn>
-                    <v-spacer>
-                    </v-spacer>
-                    <v-btn icon color="white">
-                        <span class="material-symbols-outlined">
-                            login
-                        </span>
-                    </v-btn>
-                    <v-btn icon color="white">
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </v-btn>
-                     </v-toolbar>
-                </v-card>
-                <Sidebar v-if="is_expanded"/>
-            </v-app>
-        </article>
-    </div>
+    <header class="nav-header">
+        <div class="nav-logo">
+                <span class="material-symbols-outlined">
+                    filter_vintage
+            </span>
+                <v-banner-text>App</v-banner-text>
+        </div>
+        <nav class="nav-Menubar">
+            <div class="menu-items"><router-link to="#">Home</router-link></div>
+            <div class="menu-items"><router-link to="#">About</router-link></div>
+            <Dropdown title="Services" :items="Services"></Dropdown>    
+            <div class="menu-items"><router-link to="#">Content</router-link></div>
+        </nav>
+    </header>
 </template>
 <script>
-import {ref,reactive} from 'vue';
-import Sidebar from './Sidebar.vue'
+import Dropdown from '@/layout/Dropdown.vue'
 export default {
     name:"Header",
-    components:{Sidebar},
-    data:()=>{
+    components:{Dropdown},
+    data(){
         return{
-            L_bar:"https://cdn.iconscout.com/icon/free/png-256/bars-collection-view-application-grid-menu-44415.png",
-            is_expanded:true
+            Services:[
+                {
+                    title:'web',
+                    link:'#'
+                },
+                {
+                    title:'ds',
+                    link:'#'
+                },
+                {
+                    title:'hs',
+                    link:'#'
+                },
+            ]
         }
     },
-    methods:{
-
-    },
-    setup(){
-        const is_expanded = ref(false)
-        const MenuAcitve = ()=>{
-        is_expanded.value = !is_expanded.value
-        localStorage.setItem("is_expanded", is_expanded.value)
-      }
-      return { MenuAcitve, is_expanded }
-    }
+    
 }
 </script>
-<style lang="scss" scoped>
-$border-size:1rem;
-    .header{
-        width: 100%;
-        height: 3.5rem;
-        margin-bottom: 0.5rem;
-        .search_box,#search{
-            width: 5.5rem 5em;
-            height: 1.5rem; 
-            background-color: white;
-            border: 1px soild black;
-            border-top-left-radius: $border-size;
-            border-bottom-left-radius: $border-size;
-            text-align: center;
-        }
-        #search_btn{
-            width: 5.5rem 5em;
-            height: 1.5rem;
-            border: 1px solid darkgrey;
-            border-top-right-radius: $border-size;
-            border-bottom-right-radius: $border-size;
-            background-color: rgba(169,169,169,0.7);
-
-        }
+<style lang="scss">
+.nav-header{
+    background: #232323;
+    color: #eee;
+    padding: 0.375rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 /0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .nav-logo,v-banner-text{
+        display: flex; justify-content:center; font-size: x-large; margin: -1px; cursor: pointer; align-items: center;
     }
-    .material-symbols-outlined {
-        position: absolute;
-        font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 48,}
-
+}
+.nav-Menubar{display: flex; align-items: center; justify-content: center;
+.menu-items{ color: #fff; padding:10px 20px; position: relative;  text-align: center;
+border-bottom: 3px solid transparent; display: flex; transition: 0.4s;
+>a{color: inherit; text-decoration: none;}
+&active, &:hover{
+    background-color: #444;
+    border-bottom-color: #ff58;
+}
+}
+}
 </style>
