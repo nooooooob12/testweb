@@ -22,4 +22,7 @@ export default {
 <style lang="scss">
     .Home{width: 100%;}
     .Story{width: 80%;}
+    @media screen and (max-width:768px) {
+        .Home{display: flex;}
+    }
 </style>
