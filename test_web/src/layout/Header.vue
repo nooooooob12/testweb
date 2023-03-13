@@ -57,7 +57,6 @@ export default {
         const is_Active = ref(false)
         const OpneMenu = () =>{
             is_Active.value = !is_Active.value;
-            localStorage.setItem("is_Active", is_Active.value)
             console.log('작동')
         }
         return{is_Active,OpneMenu}
