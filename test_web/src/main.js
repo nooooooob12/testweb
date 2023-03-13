@@ -17,14 +17,18 @@ import * as directives from 'vuetify/directives'
 //material 사용
 import Vue3Material from 'vue3-material'
 
-//fontAwesome 불러오기
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-// import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-// library.add(faUserSecret) -- 에러로 인해 사용 x
+// fontAwesome 불러오기
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {fas} from "@fortawesome/free-solid-svg-icons";
+import {faInstagram,faTwitter} from "@fortawesome/free-brands-svg-icons";
+
+library.add(fas)
+library.add(faInstagram,faTwitter)
+
 
 const vuetify = createVuetify ({
     components,
     directives,
 })
-createApp(App).use(Vue3Material).use(vuetify).use(store).use(router).mount('#app')
+createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(Vue3Material).use(vuetify).use(store).use(router).mount('#app')

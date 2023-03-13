@@ -1,35 +1,44 @@
 <template>
-    <header class="nav-header">
+    <nav class="nav-bar">
         <div class="nav-logo">
-            <span class="material-symbols-outlined">
-                filter_vintage
-            </span>
-            <v-banner-text>App</v-banner-text>
+            <router-link to="/">
+                <font-awesome-icon icon="fa-frog" />
+            </router-link>
+            <router-link to="/"><span class="nav-name">Coding</span></router-link>
         </div>
-        <article class="nav-bars">
-            <div class="nav-phonMenu" v-if="this.width<=768" >
-                <span class="material-symbols-outlined">menu</span>
-        </div>
-            <nav class="nav-Menubar" v-else-if="this.width>768">
-            <div class="menu-items"><router-link to="#">Home</router-link></div>
-            <div class="menu-items"><router-link to="#">About</router-link></div> 
-            <div class="menu-items"><router-link to="#">Content</router-link></div>
-            <div class="menu-items"><router-link to="#">FQA</router-link></div>
-        </nav>
-        <ul class="nav-icons">
-            <li class="menu-icons"><span class="material-symbols-outlined">Login</span></li>
-            <li class="menu-icons"><span class="material-symbols-outlined">notification_important</span></li>
-
+        <ul :class="is_Active ? 'active-menu': 'nav-menu'">
+            <li>
+                <router-link to="/">Home</router-link>
+            </li>
+            <li>
+                <router-link to="">Gallery</router-link>
+            </li>
+            <li>
+                <router-link to="">Contents</router-link>
+            </li>
+            <li>
+                <router-link to="">Production</router-link>
+            </li>
+            <li>
+                <router-link to="">FQA</router-link>
+            </li>
         </ul>
-    </article>
-    </header>
+
+        <ul :class="is_Active ? 'active-icons': 'nav-icons'">
+            <li><router-link to="Login"><font-awesome-icon icon="fa-solid fa-user-plus" /></router-link></li>
+            <li><router-link to="insta"><font-awesome-icon :icon="['fab','instagram']" /></router-link></li>
+        </ul>
+        <span class="togglebtn" @click="OpneMenu"><font-awesome-icon icon="bars" /></span>
+    </nav>
 </template>
 <script>
+import {ref} from 'vue';
 export default {
     name:"Header",
     data(){
         return{
            width:0,
+           is_Active:false
         }
     },
     mounted(){
@@ -41,60 +50,42 @@ export default {
     methods:{
         handlerResize(e){
             this.width = window.innerWidth;
-        }
+        },
+
     },
     setup(){
+        const is_Active = ref(false)
+        const OpneMenu = () =>{
+            is_Active.value = !is_Active.value;
+            localStorage.setItem("is_Active", is_Active.value)
+            console.log('작동')
+        }
+        return{is_Active,OpneMenu}
     }
 }   
 </script>
-<style lang="scss">
-.nav-header{
-    background: #232323; color: #eee; padding: 0.375rem; justify-content: space-between;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 /0.1);
-    display: flex; align-items: center; height: auto;
-    .nav-logo{display: flex; justify-content:center; font-size: x-large; margin: -1px; cursor: pointer; align-items: center;}
+<style lang="scss" scoped>
+$paddings:8 24px;
+//FullScreen 공통 태그 css설정
+a,li{text-decoration: none; color: whitesmoke; list-style: none;}
 
-.nav-bars{width: 100%; height: auto; display: flex; 
-    .nav-Menubar{display: flex; margin: 0px auto;
-        .menu-items{ color: #fff; padding-left: 0px; position: relative;display: flex; border-bottom: 3px solid transparent; transition: 0.4s;
-            >a{color: inherit; text-decoration: none; padding: 8px 24px;};
-                &active, &:hover{background-color: #444;border-bottom-color: #ff58;}; 
-            }; 
-        };
-    .nav-icons{display:flex; list-style: none; color: #eee;
-       .menu-icons{padding-left: 12px; padding-right: 12px; padding-top: 8px;
-    &:hover{cursor:pointer;background-color: #444;}} }; 
-    }; 
-};
-@media screen and (max-width:768px) {
-    .nav-phonMenu{display: flex; font-size: x-large; text-align: center; justify-content: space-between;}
-    .nav-header{
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        height: 10%;
-        overflow: hidden;
-        .nav-logo{padding:8px 12px}
-    };
-    .nav-Menubar{
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-    .nav-Menubar a {
-        width: 100%;
-        align-items: center;
-    }
-    .nav-icons{
-        justify-content: center;
-        width: 100%;
-    }
+//FullScreen Header영역 css 설정(scss)
+.nav-bar{display: flex; justify-content: space-between; align-items: center; 
+    background-color: #263343; padding: 8px 24px; width: 100%; min-height: 33px;
+.nav-logo,.nav-name{font-size:24px;}
+.nav-menu{display: flex; align-items: center; padding-left: 0px;}
+li{padding: 8px 12px;}
+.nav-icons{display: flex;}
 }
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-};
+.togglebtn{display:none;color: whitesmoke; font-size: 24px; position: absolute; right: 32px;}
+
+@media screen and (max-width:768px){
+    .nav-bar{flex-direction: column; align-items: flex-start; padding: 8px 24px;}
+    .nav-menu{display:none;flex-direction: column; align-items: center; width: 100%;}
+    .nav-menu li {display:none;width: 100%; text-align: center;}
+    .nav-icons li {display:none; justify-content: center; width: 100%;}
+    .togglebtn{display:block;}
+    .active-menu{display: flex; flex-direction: column; align-items: center; width: 100%;}
+    .active-icons{display:flex;}
+}
 </style>
