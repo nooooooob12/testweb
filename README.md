@@ -1,16 +1,11 @@
 # testweb
 
 ## 0228 Header Layout 구성
-사이드바 오픈시
-![open](https://user-images.githubusercontent.com/109400761/221890237-5b2a27e4-2998-46dd-99f7-7f0db978489e.png)
-사이드바 닫았을때
-![close](https://user-images.githubusercontent.com/109400761/221890303-3fde0840-c3f2-4d29-bac6-31567683ab94.png)
-<p>현재 기능은 탑재X</p>
-<p>반응형 웹(디스플레이 크기에 따른 조정) 기초적인 부분은 구현된 상태</p>
-추가되야 할 기능 : 
-<ol>
-  <li>Slidebar 폭에 따라 웹 반응할 수 있게 개선해보기</li>
-  <li>2.Search기능(firebase[사용 예정]을 통한 아이템값 서치 기능)</li>
-  <li>Login&LogOut기능 탑재(firebase 사용 예정)</li>
-  <li>Favorite icon (구독과 유사한, 즐겨찾기 기능으로 사용 예정)</li>
-<ol>
+풀스크린 화면
+![FullScreen](https://user-images.githubusercontent.com/109400761/224635605-28ca86a0-12d7-4704-a10c-8063ad17e560.png)
+
+width 768px기준
+![768미만 웹](https://user-images.githubusercontent.com/109400761/224635706-cfadc5f9-f8ea-4c3e-8da2-f21e70d4b50d.png)
+
+메뉴바 토글시 화면
+![스크린샷 2023-03-13 163137](https://user-images.githubusercontent.com/109400761/224635778-faf5d6c1-4bab-48f0-838f-53f7aab2b755.png)
