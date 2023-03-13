@@ -6,7 +6,8 @@
             </router-link>
             <router-link to="/"><span class="nav-name">Coding</span></router-link>
         </div>
-        <ul :class="is_Active ? 'active-menu': 'nav-menu'">
+        <ul :class="{'nav-menu':this.width>=768 || is_Active,
+                    'active-menu':this.width<768 || !is_Active}">
             <li>
                 <router-link to="/">Home</router-link>
             </li>
@@ -24,7 +25,8 @@
             </li>
         </ul>
 
-        <ul :class="is_Active ? 'active-icons': 'nav-icons'">
+        <ul :class="{'nav-icons':this.width>=768 || is_Active,
+                    'active-icons':this.width<768 || !is_Active} ">
             <li><router-link to="Login"><font-awesome-icon icon="fa-solid fa-user-plus" /></router-link></li>
             <li><router-link to="insta"><font-awesome-icon :icon="['fab','instagram']" /></router-link></li>
         </ul>
@@ -51,13 +53,11 @@ export default {
         handlerResize(e){
             this.width = window.innerWidth;
         },
-
     },
     setup(){
         const is_Active = ref(false)
         const OpneMenu = () =>{
             is_Active.value = !is_Active.value;
-            console.log('작동')
         }
         return{is_Active,OpneMenu}
     }
@@ -85,6 +85,6 @@ li{padding: 8px 12px;}
     .nav-icons li {display:none; justify-content: center; width: 100%;}
     .togglebtn{display:block;}
     .active-menu{display: flex; flex-direction: column; align-items: center; width: 100%;}
-    .active-icons{display:flex;}
+    .active-icons{display:flex; justify-content: center; width: 100%;}
 }
 </style>
