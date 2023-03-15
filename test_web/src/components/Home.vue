@@ -7,7 +7,7 @@
         </article>
     </div>
 </template>
-<script lnag="ts">
+<script lnag="">
 export default {
     name:"Home",
     data(){
@@ -20,7 +20,7 @@ export default {
 }
 </script>
 <style lang="scss">
-    .Home{width: 100%;}
+    .Home{width: 100%; height: auto;}
     .Story{width: 80%;}
     @media screen and (max-width:768px) {
         .Home{display: flex;}

@@ -21,10 +21,10 @@ import Vue3Material from 'vue3-material'
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
-import {faInstagram,faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {faInstagram,faTwitter,faGithub,faGoogle} from "@fortawesome/free-brands-svg-icons";
 
 library.add(fas)
-library.add(faInstagram,faTwitter)
+library.add(faInstagram,faTwitter,faGithub,faGoogle)
 
 
 const vuetify = createVuetify ({

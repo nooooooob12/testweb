@@ -2,7 +2,7 @@
 <div class="App">
   <Header/>
 <router-view/>
-<Footer/>
+<Footer v-if="!is_Checked"/>
 </div>
 </template>
 
@@ -13,6 +13,20 @@ import Footer from '@/layout/Footer.vue'
 export default {
   name:'APP',
   components:{Header,Footer},
+data(){
+  return{
+    is_Checked:false
+  }
+},
+created(){
+  switch(document.location.pathname){
+    case '/Login':
+      this.is_Checked = true;
+      break
+    default:
+      this.is_Checked = false;
+  }
+}
 }
 </script>
 
