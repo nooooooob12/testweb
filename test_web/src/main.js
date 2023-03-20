@@ -21,14 +21,36 @@ import Vue3Material from 'vue3-material'
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
-import {faInstagram,faTwitter,faGithub,faGoogle} from "@fortawesome/free-brands-svg-icons";
+import {faInstagram,faTwitter,faGithub,faGoogle,faFacebook} from "@fortawesome/free-brands-svg-icons";
 
 library.add(fas)
-library.add(faInstagram,faTwitter,faGithub,faGoogle)
+library.add(faInstagram,faTwitter,faGithub,faGoogle,faFacebook)
 
 
 const vuetify = createVuetify ({
     components,
     directives,
 })
+
+
+//firebase 연동
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAM3pNwfF559OIcIBXTusYKkfYS6ARBpHY",
+  authDomain: "testweb-ff663.firebaseapp.com",
+  projectId: "testweb-ff663",
+  storageBucket: "testweb-ff663.appspot.com",
+  messagingSenderId: "173318368530",
+  appId: "1:173318368530:web:a084321747dcd1ee6997cb",
+  measurementId: "G-H0DE75L8X4"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(app);
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(Vue3Material).use(vuetify).use(store).use(router).mount('#app')

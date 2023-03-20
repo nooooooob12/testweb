@@ -7,38 +7,123 @@
                 <span class="SNS_title">SNS로그인</span>
             </div>
             <ul class="SNS_Login">
-                <li class="SNS_item"><router-link to="#"><font-awesome-icon :icon="['fab','github']"/></router-link></li>
-                <li class="SNS_item"><router-link to="#"><font-awesome-icon :icon="['fab','twitter']"/></router-link></li>
-                <li class="SNS_item"><router-link to="#"><font-awesome-icon :icon="['fab','google']"/></router-link></li>
+                <li class="SNS_item" @click="GitLogin"><router-link to="#"><font-awesome-icon :icon="['fab','github']"/></router-link></li>
+                <li class="SNS_item" @click="facebookLogin"><router-link to="#"><font-awesome-icon :icon="['fab','facebook']"/></router-link></li>
+                <li class="SNS_item" @click="GoogleLogin"><router-link to="#"><font-awesome-icon :icon="['fab','google']"/></router-link></li>
             </ul>
             <div class="Web_wrap">
                 <span class="Web_title">Coding_Web 계정으로 로그인</span>
             </div>
-            <form action="post">
                 <div class="Web_Login">
                     <div>
                         <label for="user-id">아이디</label>
                         <div class="ID_box">
-                            <input type="text" name="user-id" autocomplete="on">
+                            <input type="text" name="user-id" autocomplete="on" v-model="this.ID">
                         </div>
                     </div>
                     <div>
                         <label for="user-pw">패스워드</label>
                         <div class="PW_box">
-                            <input type="password" name="user-pw" autocomplete="on">
+                            <input type="password" name="user-pw" autocomplete="on" v-model="this.password">
                         </div>
                     </div>
                 </div>
                 <div class="account_find">
                     <router-link to="account">계정찾기</router-link>
                 </div>
-                <button class="sign_in">로그인</button>
-            </form>
+                <button class="sign_in" @click="login">로그인</button>
+                <span class="sign_up">아직 회원이 아니신가요? <router-link to="Signup">회원가입</router-link></span>
     </article>
 </template>
 <script>
+import { getAuth, signInWithEmailAndPassword,signInWithPopup, EmailAuthProvider,
+         FacebookAuthProvider,GoogleAuthProvider, GithubAuthProvider,} from "firebase/auth";
+import router from "@/router/router";
+const auth = getAuth();
 export default {
-    
+    name:'Login',
+    data(){
+        return{
+            ID:'',
+            password:''
+        }
+    },
+    created(){
+    },
+    methods:{
+        Web_login(){
+        },
+        facebookLogin(){
+            const fbprovider = new FacebookAuthProvider();
+            fbprovider.addScope('user_birthday');
+            auth.languageCode = 'ko';
+            fbprovider.setCustomParameters({
+                display:'popup'
+            });
+            signInWithPopup(auth,fbprovider)
+            .then((result)=>{
+                const user = result.user;
+                const credential = FacebookAuthProvider.credentialFromResult(result);
+                const accessToken = credential.accessToken;
+                alert(user.displayName+'님, 반갑습니다.')
+                router.push('/')
+            })
+            .catch((err)=>{
+                const errorCode = err.code;
+                const errorMessage = err.message;
+                const email = err.customData.email;
+                const credential = FacebookAuthProvider.credentialFromError(err);
+                console.log(errorCode + errorMessage + credential + email)
+            })
+        },
+        GoogleLogin(){
+            const Gprovider = new GoogleAuthProvider();
+            Gprovider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+            auth.languageCode = 'ko';
+            Gprovider.setCustomParameters({
+                'Hint-ID':'user@gmail.com',
+                'Hint-Password':'특수문자포함한 8글자 이상, 12글자 이내'
+            })
+            signInWithPopup(auth,Gprovider)
+            .then((result)=>{
+                const Gcredential = GoogleAuthProvider.credentialFromResult(result);
+                const token = Gcredential.accessToken;
+                const Guser = result.user;
+                alert(Guser.displayName+'님, 반갑습니다!')
+                router.push('/')
+            })
+            .catch((err)=>{
+                const errorCode = err.code;
+                const errorMessage = err.message;
+                const email = err.customData.email;
+                const credential = GoogleAuthProvider.credentialFromError(err);
+                console.log(errorCode + errorMessage + credential + email)
+            })
+        },
+
+        GitLogin(){
+            const gitProvider = new GithubAuthProvider();
+            gitProvider.addScope('repo');
+            auth.languageCode = 'ko';
+            gitProvider.setCustomParameters({
+                'allow_signup':'false',
+            });
+            signInWithPopup(auth,gitProvider).then((result)=>{
+                const gitCredential = GithubAuthProvider.credentialFromResult(result)
+                const token = gitCredential.accessToken;
+                const gituser = result.user
+                alert(gituser.displayName+'님, 반갑습니다.')
+                router.push('/')
+            })
+            .catch((err)=>{
+                const errorCode = err.code;
+                const errorMessage = err.message;
+                const email = err.customData.email;
+                const credential = GithubAuthProvider.credentialFromError(err);
+                console.log(errorCode + errorMessage + credential + email)
+            })
+        }
+}
 }
 </script>
 <style lang="scss">
@@ -50,7 +135,7 @@ input:focus{outline: 0;}
     .SNS_title{margin-top:2.5rem;float: left; font-size: medium;}
     .SNS_Login{display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin-top: 5.5rem;gap: 0.75rem;
         .SNS_item{list-style: none; display: block; border: 1px solid black; border-radius: 3px; text-decoration: none;  box-sizing: border-box;
-            &:hover{box-shadow: 1px 0px 5px gray;}
+            &:hover{box-shadow: 1px 0px 5px gray;cursor: pointer;}
             >a{color:rgb(75,85,99); font-size: large; width:100%; height:100%}
         }
     }

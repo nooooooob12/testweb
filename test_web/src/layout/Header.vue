@@ -40,7 +40,7 @@ export default {
     data(){
         return{
            width:0,
-           is_Active:false
+           is_Active:true
         }
     },
     mounted(){
@@ -55,7 +55,7 @@ export default {
         },
     },
     setup(){
-        const is_Active = ref(false)
+        const is_Active = ref(true)
         const OpneMenu = () =>{
             is_Active.value = !is_Active.value;
         }
