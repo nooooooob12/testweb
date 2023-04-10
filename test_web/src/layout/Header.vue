@@ -69,7 +69,7 @@ $paddings:8 24px;
 a,li{text-decoration: none; list-style: none; color: aliceblue;}
 //FullScreen Header영역 css 설정(scss)
 .nav-bar{display: flex; justify-content: space-between; align-items: center;  position: fixed;
-    background-color: #263343; padding: 8px 24px; width: 100%; min-height: 33px;
+    background-color: #263343; padding: 8px 24px; width: 100%; min-height: 33px; z-index: 1;
 .nav-logo,.nav-name{font-size:24px;}
 .nav-menu{display: flex; align-items: center; padding-left: 0px;}
 li{padding: 8px 12px; color: aliceblue;}
@@ -77,9 +77,9 @@ li:hover{border-radius: 3px; box-shadow: 0px 0px 10px #fff;}
 .nav-icons{display: flex;}
 }
 .togglebtn{display:none;color: whitesmoke; font-size: 24px; position: absolute; right: 32px;}
-
+//768px(평균적인 모바일크기?)css
 @media screen and (max-width:768px){
-    .nav-bar{flex-direction: column; align-items: flex-start; padding: 8px 24px;}
+    .nav-bar{flex-direction: column; align-items: flex-start; padding: 8px 24px; z-index: 1;}
     .nav-menu{display:none;flex-direction: column; align-items: center; width: 100%;}
     .nav-menu li {display:none;width: 100%; text-align: center;}
     .nav-icons li {display:none; justify-content: center; width: 100%;}

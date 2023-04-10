@@ -10,6 +10,7 @@
                 <li class="SNS_item" @click="GitLogin"><router-link to="#"><font-awesome-icon :icon="['fab','github']"/></router-link></li>
                 <li class="SNS_item" @click="facebookLogin"><router-link to="#"><font-awesome-icon :icon="['fab','facebook']"/></router-link></li>
                 <li class="SNS_item" @click="GoogleLogin"><router-link to="#"><font-awesome-icon :icon="['fab','google']"/></router-link></li>
+                <li class="SNS_item" @click=""><router-link to="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111683.png" alt="카톡" id="katalk"></router-link></li>
             </ul>
             <div class="Web_wrap">
                 <span class="Web_title">Coding_Web 계정으로 로그인</span>
@@ -127,7 +128,10 @@ export default {
 }
 </script>
 <style lang="scss">
-input:focus{outline: 0;}
+input{width: 100%; padding-left: 0.375rem; padding-right: 0.375rem;
+    input:focus{outline: 0;}
+}
+
     .Login_wrap{ display: block; margin: 0 auto; min-height: 100%; width: 460px; box-sizing: border-box; margin-top: 10%;align-items: center; justify-content: center; text-align: center;
     #Login_img{width: 10rem;}
     .main_message{margin-top:1.5rem; color: rgb(75,85,99); font-size: 1.5rem; line-height: 2rem; font-weight: bold;}
@@ -137,8 +141,9 @@ input:focus{outline: 0;}
         .SNS_item{list-style: none; display: block; border: 1px solid black; border-radius: 3px; text-decoration: none;  box-sizing: border-box;
             &:hover{box-shadow: 1px 0px 5px gray;cursor: pointer;}
             >a{color:rgb(75,85,99); font-size: large; width:100%; height:100%}
+            img{width: 17.43px; height: 17px; text-align: center; margin: 0 auto; display: block; margin-top: 3px;margin-bottom: 3px;}
         }
-    }
+        }
     .Web_wrap{position: relative; display: flex; justify-content: center; font-size: small; margin-top: 1.75rem;
         .Web_title{padding-left: 0.5rem; padding-right: 0.5rem; color: rgb(107, 114, 128);      
     }

@@ -16,7 +16,7 @@ export default {
 <style lang="scss" scoped>
 a{text-decoration: none; color:#8a8c8f}
 html,body{margin: 0px; padding: 0px;}
-.inner_footer{position:absolute; bottom:100%;
+.inner_footer{position: relative; bottom: -10%;
   min-height: auto; width: 100%; padding: 0 25px; line-height: 25px; 
   color: #8a8c8f;border-top: 1px solid #dee5e7;background-color: #f2f2f2;
 

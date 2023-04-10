@@ -48,9 +48,23 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const apps = initializeApp(firebaseConfig);
 
 
 // Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(app);
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(Vue3Material).use(vuetify).use(store).use(router).mount('#app')
+const auth = getAuth(apps);
+
+
+//axios 설정
+import axios from 'axios';
+import VueAxios from 'vue-axios'
+// Vue.prototype.$http = axios; = vue2에서 사용된 방식
+
+const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
+.use(Vue3Material)
+.use(vuetify)
+.use(store)
+.use(router)
+.use(VueAxios,axios)
+app.config.globalProperties.axios = axios
+app.mount('#app')
