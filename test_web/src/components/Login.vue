@@ -10,7 +10,7 @@
                 <li class="SNS_item" @click="GitLogin"><router-link to="#"><font-awesome-icon :icon="['fab','github']"/></router-link></li>
                 <li class="SNS_item" @click="facebookLogin"><router-link to="#"><font-awesome-icon :icon="['fab','facebook']"/></router-link></li>
                 <li class="SNS_item" @click="GoogleLogin"><router-link to="#"><font-awesome-icon :icon="['fab','google']"/></router-link></li>
-                <li class="SNS_item" @click=""><router-link to="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111683.png" alt="카톡" id="katalk"></router-link></li>
+                <li class="SNS_item" @click="KaKaoLogin"><router-link to="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111683.png" alt="카톡" id="katalk"></router-link></li>
             </ul>
             <div class="Web_wrap">
                 <span class="Web_title">Coding_Web 계정으로 로그인</span>
@@ -123,6 +123,41 @@ export default {
                 const credential = GithubAuthProvider.credentialFromError(err);
                 console.log(errorCode + errorMessage + credential + email)
             })
+        },
+
+        KaKaoLogin(){
+            window.Kakao.init('d8d966d8df950110bedeafefffc41d6b')
+            if(window.Kakao.Auth.getAccessToken()){
+                window.Kakao.API.request({
+                    url:'v1/user/unlink',
+                    success:function(res){
+                        console.log(res)
+                    },
+                    fail:function(err){
+                        console.log(err)
+                    },
+                });
+                window.Kakao.Auth.setAccessToken(undefined)
+            }
+            window.Kakao.Auth.login({
+        success: function () {
+          window.Kakao.API.request({
+            url: '/v2/user/me',
+            data: {
+              property_keys: ["kakao_account.email"]
+            },
+            success: async function (response) {
+              console.log(response);
+            },
+            fail: function (error) {
+              console.log(error)
+            },
+          })
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
         }
 }
 }
@@ -137,11 +172,11 @@ input{width: 100%; padding-left: 0.375rem; padding-right: 0.375rem;
     .main_message{margin-top:1.5rem; color: rgb(75,85,99); font-size: 1.5rem; line-height: 2rem; font-weight: bold;}
     .sub_message{margin-top:0.5rem; font-size: small; color: rgb(75,85,99);}
     .SNS_title{margin-top:2.5rem;float: left; font-size: medium;}
-    .SNS_Login{display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin-top: 5.5rem;gap: 0.75rem;
+    .SNS_Login{display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); margin-top: 5.5rem;gap: 0.75rem;
         .SNS_item{list-style: none; display: block; border: 1px solid black; border-radius: 3px; text-decoration: none;  box-sizing: border-box;
             &:hover{box-shadow: 1px 0px 5px gray;cursor: pointer;}
-            >a{color:rgb(75,85,99); font-size: large; width:100%; height:100%}
-            img{width: 17.43px; height: 17px; text-align: center; margin: 0 auto; display: block; margin-top: 3px;margin-bottom: 3px;}
+            >a{color:rgb(75,85,99); font-size: large; width:100%; height:100%;}
+            img{width: 19.43px; height: 17px; text-align: center; margin: 0 auto; display: block; margin-top: 4px;margin-bottom: 3px;}
         }
         }
     .Web_wrap{position: relative; display: flex; justify-content: center; font-size: small; margin-top: 1.75rem;
